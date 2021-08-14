@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: readingisgood
+  codec:
+    max-in-memory-size: 10MB
+
+  data:
+    mongodb:
+      database: ${mongo.name}
+      uri: ${mongo.uri}
+    redis:
+      repositories:
+        enabled: true
+  redis:
+    host: ${redis.host}
+    port: ${redis.port}
+    password: ${redis.password}
+    connect-timeout: 60000
+    client-type: LETTUCE
