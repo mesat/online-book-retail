@@ -89,7 +89,7 @@ public class BookBusinessImpl implements BookBusiness {
                               return bookCache
                                   .opsForValue()
                                   .get(bookId)
-                                  .flatMap(stock -> this.updateStock(stock, bookId))
+                                  .flatMap(stock -> this.updateStock(1, bookId))
                                   .flatMap(book -> this.updateCacheAndDb(book,false));
                             });
               }
@@ -107,7 +107,7 @@ public class BookBusinessImpl implements BookBusiness {
         .get(bookId)
         .flatMap(
             stock -> {
-              if (stock < 0) {
+              if ( stock == null || stock < 0 ) {
                   try {
                       Thread.sleep(100);
                   } catch (InterruptedException e) {
