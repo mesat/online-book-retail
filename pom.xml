@@ -10,6 +10,7 @@
     <modules>
         <module>readingisgood</module>
     </modules>
+    <packaging>pom</packaging>
 
 
 </project>
