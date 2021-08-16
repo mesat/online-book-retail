@@ -108,7 +108,13 @@ public class BookBusinessImpl implements BookBusiness {
         .flatMap(
             stock -> {
               if (stock < 0) {
-                return Mono.delay(Duration.ofMillis(100)).then(Mono.just(false));
+                  try {
+                      Thread.sleep(100);
+                  } catch (InterruptedException e) {
+                      e.printStackTrace();
+                  }
+
+                  return Mono.delay(Duration.ofMillis(100)).then(Mono.just(false));
               }
               return Mono.just(true);
             });
